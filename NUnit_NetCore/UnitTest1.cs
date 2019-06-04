@@ -1,25 +1,15 @@
 using NUnit.Framework;
 using System;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using Microsoft.CSharp;
-using System.Windows.Input;
 using Starline;
-using System.Configuration;
 
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 
 
@@ -52,12 +42,12 @@ namespace FluxoVendaCartoes
 
 
             driver.Manage().Window.Maximize();
-            baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
+            //baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
+            //verificationErrors = new StringBuilder();
+
+
+            baseURL = "http://10.10.41.171/psfsecurity/paginas/security/login/tela/login.html";
             verificationErrors = new StringBuilder();
-
-
-            // baseURL = "http://10.10.41.171/psfsecurity/paginas/security/login/tela/login.html";
-            // verificationErrors = new StringBuilder();
         }
 
         public void wait(By elemento)
@@ -107,17 +97,7 @@ namespace FluxoVendaCartoes
         public void CT001_Cadastro_de_Clientes_Aposentados()
         {
 
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
-
+            
 
             //Método de Print
             ScreenShot print = new ScreenShot("VendaCartoes", "CT001_Cadastro_de_Clientes");
@@ -171,7 +151,7 @@ namespace FluxoVendaCartoes
 
             ////Alterar Filial
             Thread.Sleep(2000);
-            SendKeys.SendWait("{ESC}");
+            SendKeys.Send("{ESC}");
             Thread.Sleep(2000);
             driver.FindElement(By.Id("labelFilial")).Click();
             Thread.Sleep(2000);
@@ -218,7 +198,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("26455022882");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("22883170860");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -235,7 +215,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("28/05/1974");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("31/03/1989");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
@@ -244,23 +224,7 @@ namespace FluxoVendaCartoes
             Thread.Sleep(8000);
 
 
-            //if (this.IsElementPresent(By.Id("dialog-message")))
-
-            //{
-            //    wait(By.CssSelector("#modalContent > div.modal-body.row"));
-            //    string Retorno = driver.FindElement(By.CssSelector("#modalContent > div.modal-body.row")).Text;
-            //    // var setMensagemRetorno =
-            //    Marisa.TestDataAccess.ExcelDataAccess.SetMesagemRetorno(Retorno, Cadastro.CPF);
-            //    Thread.Sleep(2000);
-            //    print.PrintScreen();
-
-            //    //refazer o contador
-            //    //int counter = 0;
-            //    //int NumeroCPF = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem().total;
-
-            //    //while (counter < NumeroCPF) ;
-
-            //}
+            
 
 
             wait(By.Id("avancarDadosPessoais"));
@@ -292,12 +256,12 @@ namespace FluxoVendaCartoes
 
 
 
-            ////Sexo       
-            //Thread.Sleep(2000);
-            //driver.FindElement(By.Id("sexoDadosPessoais")).Click();
-            //Thread.Sleep(2000);
-            //driver.FindElement(By.Id("sexoDadosPessoais")).SendKeys("MASCULINO"); // PEGAR DO BANCO
-            //SendKeys.SendWait("{ENTER}");
+            //Sexo       
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("sexoDadosPessoais")).Click();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("sexoDadosPessoais")).SendKeys("MASCULINO"); // PEGAR DO BANCO
+            SendKeys.SendWait("{ENTER}");
 
 
             //Deseja Receber a Fatura por email?         
@@ -566,17 +530,7 @@ namespace FluxoVendaCartoes
         [Test]
         public void CT002_Cadastro_de_Clientes_Autonomo()
         {
-
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
+            
 
 
             //Método de Print
@@ -678,7 +632,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("14041562678");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("15774699846");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -695,7 +649,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("08/08/1965");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("30/10/1970");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
@@ -1024,16 +978,7 @@ namespace FluxoVendaCartoes
         public void CT003_Cadastro_de_Clientes_Assalariado()
         {
 
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
+            
 
 
             //Método de Print
@@ -1135,7 +1080,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("14041562678"); // PEGAR DO BANCO
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("46777196838"); // PEGAR DO BANCO
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -1152,7 +1097,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("08/08/1965");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("10/05/1996");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
@@ -1324,21 +1269,21 @@ namespace FluxoVendaCartoes
             driver.FindElement(By.Id("rendaMensalDadosComerciais")).SendKeys("10000");
 
 
-            ////Tempo de Empresa (ANO)
-            //Thread.Sleep(2000);
-            //driver.FindElement(By.Id("tempoEmpresaAnoDadosComerciais")).Click();
-            //driver.FindElement(By.Id("tempoEmpresaAnoDadosComerciais")).Clear();
-            //Thread.Sleep(2000);
-            //driver.FindElement(By.Id("tempoEmpresaAnoDadosComerciais")).SendKeys("10");
+            //Tempo de Empresa (ANO)
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("tempoEmpresaAnoDadosComerciais")).Click();
+            driver.FindElement(By.Id("tempoEmpresaAnoDadosComerciais")).Clear();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("tempoEmpresaAnoDadosComerciais")).SendKeys("10");
 
 
 
-            ////Tempo de Empresa (MES)
-            //Thread.Sleep(2000);
-            //driver.FindElement(By.Id("tempoEmpresaMes")).Click();
-            //driver.FindElement(By.Id("tempoEmpresaMes")).Clear();
-            //Thread.Sleep(2000);
-            //driver.FindElement(By.Id("tempoEmpresaMes")).SendKeys("10");
+            //Tempo de Empresa (MES)
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("tempoEmpresaMes")).Click();
+            driver.FindElement(By.Id("tempoEmpresaMes")).Clear();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("tempoEmpresaMes")).SendKeys("10");
 
 
             //CEP
@@ -1482,18 +1427,7 @@ namespace FluxoVendaCartoes
         public void CT004_Cadastro_de_Clientes_Estabelecidos()
         {
 
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
-
-
+           
             //Método de Print
             ScreenShot print = new ScreenShot("VendaCartoes", "CT001_Cadastro_de_Clientes");
 
@@ -1593,7 +1527,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("14041562678");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("7007739830");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -1610,7 +1544,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("08/08/1965");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("14/10/1967");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
@@ -1939,17 +1873,7 @@ namespace FluxoVendaCartoes
         public void CT005_Cadastro_de_Clientes_Funcionarios()
         {
 
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
-
+            
 
             //Método de Print
             ScreenShot print = new ScreenShot("VendaCartoes", "CT001_Cadastro_de_Clientes");
@@ -2050,7 +1974,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("14041562678");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("5339718379");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -2067,7 +1991,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("08/08/1965");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("10/06/1992");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
@@ -2396,16 +2320,7 @@ namespace FluxoVendaCartoes
         public void CT006_Cadastro_de_Clientes_Liberais()
         {
 
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
+           
 
 
             //Método de Print
@@ -2507,7 +2422,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("14041562678");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("4491536902");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -2524,7 +2439,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("08/08/1965");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("11/02/1967");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
@@ -2853,16 +2768,7 @@ namespace FluxoVendaCartoes
         public void CT007_Cadastro_de_Clientes_Outros()
         {
 
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
+            
 
 
             //Método de Print
@@ -2964,7 +2870,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("14041562678");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("5207901117");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -2981,7 +2887,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("08/08/1965");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("25/10/1995");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
@@ -3311,16 +3217,7 @@ namespace FluxoVendaCartoes
         public void CT008_Cadastro_de_Clientes_Pensonistas()
         {
 
-            ////Parametros 
-            //var Cadastro = Marisa.TestDataAccess.ExcelDataAccess.GetCPF();
-
-            //var Pessoal = Marisa.TestDataAccess.ExcelDataAccess.GetEstadoCivil();
-
-            //var Comercial = Marisa.TestDataAccess.ExcelDataAccess.GetCepComercial();
-
-            //var Outros = Marisa.TestDataAccess.ExcelDataAccess.GetVencimentoMelhorDia();
-
-            //var SemMensagem = Marisa.TestDataAccess.ExcelDataAccess.GetSemMensagem();
+            
 
 
             //Método de Print
@@ -3422,7 +3319,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("14041562678");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("8947536300");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -3439,7 +3336,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("08/08/1965");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("10/01/2001");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
