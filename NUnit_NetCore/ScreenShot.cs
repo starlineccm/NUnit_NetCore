@@ -29,7 +29,7 @@ public class ScreenShot
     }
     public void PrintScreen()
     {
-        string wpath = "C:\\Projetos\\CCM\\TestResults\\Prints\\POC\\";
+        string wpath = "C:\\Projetos\\CCM\\TestResults\\Prints\\POC\\VendaCartoes";
 
 
         string folder = wpath + "\\" + pasta; //nome do diretorio a ser criado
