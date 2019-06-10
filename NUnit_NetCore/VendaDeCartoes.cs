@@ -50,8 +50,8 @@ namespace FluxoVendaCartoes
                        
 
             var options = new ChromeOptions();
-           // options.AddArgument("--headless");
-           // options.AddArgument("--no-sandbox");
+            options.AddArgument("--headless");
+            options.AddArgument("--no-sandbox");
             options.AddArgument("--disable-dev-shm-usage");
             driver = new ChromeDriver(service, options);
             baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
