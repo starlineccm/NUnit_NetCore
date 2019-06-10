@@ -26,13 +26,37 @@ namespace FluxoVendaCartoes
         private StringBuilder verificationErrors;
         private string baseURL;
         private bool acceptNextAlert = true;
+        public bool OSLinux = false;
+        public string PathChromeDriver = "";
 
 
 
         [SetUp]
         public void SetupTest()
         {
-          
+            var os = Environment.OSVersion;
+            OSLinux = os.Platform == PlatformID.Unix;
+            ChromeDriverService service=null;
+            if (OSLinux)
+            {
+                PathChromeDriver = "/usr/bin/";
+                service = ChromeDriverService.CreateDefaultService(PathChromeDriver, "chromedriver");
+            }
+            else
+            {
+                PathChromeDriver = @"C:\MARISA\CCM\NUnit_NetCore\NUnit_NetCore\bin\Debug\netcoreapp2.1";
+                service = ChromeDriverService.CreateDefaultService(PathChromeDriver, "chromedriver.exe");
+            }            
+                       
+
+            var options = new ChromeOptions();
+           // options.AddArgument("--headless");
+           // options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
+            driver = new ChromeDriver(service, options);
+            baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
+            verificationErrors = new StringBuilder();
+
 
             //// Executar testes em background
             //var options = new ChromeOptions();
@@ -45,19 +69,18 @@ namespace FluxoVendaCartoes
             //driver = new ChromeDriver(chromeDriverService, options);
 
 
-            //Executar teste com browser aberto Chrome             
-
-            ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--user-agent=Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Mobile Safari/537.36");
-            options.AddArgument("start-maximized");
-            options.EnableMobileEmulation("Galaxy S5");
-            options.AddArgument("--disable-plugins");
-            options.AddArgument("window-size=360,640");
-            options.AddArgument("rotatable");
-            driver = new ChromeDriver(@"C:\MARISA\CCM\NUnit_NetCore\NUnit_NetCore\bin\Debug\netcoreapp2.1");
-            driver.Manage().Cookies.DeleteAllCookies();
-            baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
-            verificationErrors = new StringBuilder();
+            //Executar teste com browser aberto Chrome   
+            //ChromeOptions options = new ChromeOptions();
+            //options.AddArgument("--user-agent=Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Mobile Safari/537.36");
+            //options.AddArgument("start-maximized");
+            //options.EnableMobileEmulation("Galaxy S5");
+            //options.AddArgument("--disable-plugins");
+            //options.AddArgument("window-size=360,640");
+            //options.AddArgument("rotatable");
+            //driver = new ChromeDriver(@"C:\MARISA\CCM\NUnit_NetCore\NUnit_NetCore\bin\Debug\netcoreapp2.1");
+            //driver.Manage().Cookies.DeleteAllCookies();
+            //baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
+            //verificationErrors = new StringBuilder();
 
 
             //Executar teste com browser aberto Firefox
@@ -79,7 +102,7 @@ namespace FluxoVendaCartoes
         }
 
 
-       
+
         public void Login()
         { //Validar Seção de Login
 
@@ -98,20 +121,7 @@ namespace FluxoVendaCartoes
 
         }
 
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-            NUnit.Framework.Assert.AreEqual("", verificationErrors.ToString());
-        }
-
+       
         [Test]
         public void CT001_Cadastro_de_Clientes_Aposentados()
         {
