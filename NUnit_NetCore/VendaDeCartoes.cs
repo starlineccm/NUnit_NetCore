@@ -50,8 +50,8 @@ namespace FluxoVendaCartoes
                        
 
             var options = new ChromeOptions();
-            options.AddArgument("--headless");
-            options.AddArgument("--no-sandbox");
+            //options.AddArgument("--headless");
+            //options.AddArgument("--no-sandbox");
             options.AddArgument("--disable-dev-shm-usage");
             driver = new ChromeDriver(service, options);
             baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
@@ -227,6 +227,7 @@ namespace FluxoVendaCartoes
             //Cenario 1 - Cadastro de Clientes
 
             //Consultar Cliente
+
             driver.FindElement(By.Id("cpfSearch")).Clear();
             driver.FindElement(By.Id("cpfSearch")).SendKeys("75940540597");
             Thread.Sleep(2000);
