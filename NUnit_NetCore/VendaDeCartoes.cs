@@ -52,12 +52,15 @@ namespace FluxoVendaCartoes
 
 
             //var options = new ChromeOptions();
-            ////options.AddArgument("--headless");
+            //////options.AddArgument("--headless");
             ////options.AddArgument("--no-sandbox");
             //options.AddArgument("--disable-dev-shm-usage");
-            //driver = new ChromeDriver(service, options);
-            //baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
-            //verificationErrors = new StringBuilder();
+            //options.AddArgument("--touch-events=enabled");
+            //options.AddArgument("start-maximized");
+            //options.EnableMobileEmulation("iPhone 5/SE");
+            ////driver = new ChromeDriver(service, options);
+            ////baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
+            ////verificationErrors = new StringBuilder();
 
 
             //// Executar testes em background
@@ -75,8 +78,8 @@ namespace FluxoVendaCartoes
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--touch-events=enabled");
             options.AddArgument("start-maximized");
-            options.EnableMobileEmulation("iPhone 5/SE");              
-            driver = new ChromeDriver(@"C:\MARISA\CCM\NUnit_NetCore\NUnit_NetCore\bin\Debug\netcoreapp2.1" , options);
+            options.EnableMobileEmulation("iPhone 5/SE");
+            driver = new ChromeDriver(@"C:\MARISA\CCM\NUnit_NetCore\NUnit_NetCore\bin\Debug\netcoreapp2.1", options);
             driver.Manage().Window.Maximize();
             baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
             verificationErrors = new StringBuilder();
@@ -252,7 +255,7 @@ namespace FluxoVendaCartoes
 
             //Consultar Cliente
             driver.FindElement(By.Id("cpfSearch")).Clear();
-            driver.FindElement(By.Id("cpfSearch")).SendKeys("13661427482");
+            driver.FindElement(By.Id("cpfSearch")).SendKeys("5339718379");
             Thread.Sleep(2000);
             print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
@@ -269,7 +272,7 @@ namespace FluxoVendaCartoes
             Assert.IsTrue(IsElementPresent(By.Id("formPreCadastro")));
 
             driver.FindElement(By.Id("dataNascCad")).Click();
-            driver.FindElement(By.Id("dataNascCad")).SendKeys("14/05/1997");
+            driver.FindElement(By.Id("dataNascCad")).SendKeys("10/06/1992");
             driver.FindElement(By.Id("iniciarCadastro")).Click();
 
 
