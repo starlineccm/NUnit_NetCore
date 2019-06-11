@@ -3707,8 +3707,7 @@ namespace FluxoVendaCartoes
             catch
             {
                 return false;
-            }
-            return false;
+            }            
         }
 
         private bool isElementNotPresent(By by)
