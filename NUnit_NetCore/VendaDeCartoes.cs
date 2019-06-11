@@ -35,7 +35,9 @@ namespace FluxoVendaCartoes
 
         [SetUp]
         public void SetupTest()
+
         {
+            var options = new ChromeOptions();
             var os = Environment.OSVersion;
             OSLinux = os.Platform == PlatformID.Unix;
             ChromeDriverService service=null;
@@ -51,16 +53,16 @@ namespace FluxoVendaCartoes
             }
 
 
-            //var options = new ChromeOptions();
-            //////options.AddArgument("--headless");
-            ////options.AddArgument("--no-sandbox");
-            //options.AddArgument("--disable-dev-shm-usage");
-            //options.AddArgument("--touch-events=enabled");
-            //options.AddArgument("start-maximized");
-            //options.EnableMobileEmulation("iPhone 5/SE");
-            ////driver = new ChromeDriver(service, options);
-            ////baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
-            ////verificationErrors = new StringBuilder();
+            
+            options.AddArgument("--headless");            
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
+            options.AddArgument("--touch-events=enabled");
+            options.AddArgument("start-maximized");
+            options.EnableMobileEmulation("iPhone 5/SE");
+            driver = new ChromeDriver(service, options);
+            baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
+            verificationErrors = new StringBuilder();
 
 
             //// Executar testes em background
@@ -74,26 +76,19 @@ namespace FluxoVendaCartoes
             //driver = new ChromeDriver(chromeDriverService, options);
 
 
-            // Executar teste com browser aberto Chrome
-            ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--touch-events=enabled");
-            options.AddArgument("start-maximized");
-            options.EnableMobileEmulation("iPhone 5/SE");
-            driver = new ChromeDriver(@"C:\MARISA\CCM\NUnit_NetCore\NUnit_NetCore\bin\Debug\netcoreapp2.1", options);
-            driver.Manage().Window.Maximize();
-            baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
-            verificationErrors = new StringBuilder();
-
-
-            //Executar teste com browser aberto Firefox
-            //FirefoxOptions options = new FirefoxOptions();
-            //options.AddArgument("--user-agent=Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25");
+            //// Executar teste com browser aberto Chrome
+            //ChromeOptions options = new ChromeOptions();
+            //options.AddArgument("--touch-events=enabled");
+            //options.AddArgument("--no-sandbox");
+            //options.AddArgument("--disable-dev-shm-usage");
             //options.AddArgument("start-maximized");
-            //options.AddArguments("iPhone 6/7/8");
-            //driver = new FirefoxDriver(options);
-            //driver.Manage().Cookies.DeleteAllCookies();
+            //options.EnableMobileEmulation("iPhone 5/SE");
+            //driver = new ChromeDriver(@"C:\MARISA\CCM\NUnit_NetCore\NUnit_NetCore\bin\Debug\netcoreapp2.1", options);
+            //driver.Manage().Window.Maximize();
             //baseURL = "https://ccmhomolog.marisa.com.br/psfsecurity/paginas/security/login/tela/login.html";
             //verificationErrors = new StringBuilder();
+
+
 
         }
 
