@@ -6,7 +6,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using System.Windows.Forms;
 using Starline;
 using WindowsInput.Native;
 using WindowsInput;
@@ -149,7 +148,7 @@ namespace FluxoVendaCartoes
             Actions touchActions = new Actions(driver);
 
             //Método de Print
-            ScreenShot print = new ScreenShot("VendaCartoes", "CT001_Cadastro_de_Clientes");
+            //ScreenShot print = new ScreenShot("VendaCartoes", "CT001_Cadastro_de_Clientes");
 
 
             //Execução
@@ -160,7 +159,7 @@ namespace FluxoVendaCartoes
 
             wait(By.XPath("//button[@type='submit']"));
             wait(By.CssSelector("img.png_bg"));
-            print.PrintScreen();
+            //print.PrintScreen();
 
             try
             {
@@ -188,14 +187,14 @@ namespace FluxoVendaCartoes
                 verificationErrors.Append(e.Message);
             }
 
-            print.PrintScreen();
+            //print.PrintScreen();
 
             //Realizar login
             Login();
 
 
             wait(By.Id("btnSearch"));
-            print.PrintScreen();
+            //print.PrintScreen();
 
 
             ////Alterar Filial
@@ -252,7 +251,7 @@ namespace FluxoVendaCartoes
             driver.FindElement(By.Id("cpfSearch")).Clear();
             driver.FindElement(By.Id("cpfSearch")).SendKeys("5339718379");
             Thread.Sleep(2000);
-            print.PrintScreen();
+            //print.PrintScreen();
             driver.FindElement(By.Id("btnSearch")).Click();
             Thread.Sleep(2000);
 
@@ -331,7 +330,7 @@ namespace FluxoVendaCartoes
 
             Thread.Sleep(2000);
 
-            print.PrintScreen();
+            //print.PrintScreen();
 
             //Botão avançar
             driver.FindElement(By.Id("avancarDadosPessoais")).Click();
@@ -384,7 +383,7 @@ namespace FluxoVendaCartoes
 
 
 
-            print.PrintScreen();
+            //print.PrintScreen();
 
             //Botão avançar
             //Thread.Sleep(2000);
@@ -555,7 +554,7 @@ namespace FluxoVendaCartoes
             touchActions.DragAndDrop(driver.FindElement(By.Id("imgOrientation")), driver.FindElement(By.Id("signatureLine")));
             touchActions.Build();
             touchActions.Perform();
-            print.PrintScreen();
+            //print.PrintScreen();
 
 
 
@@ -568,7 +567,7 @@ namespace FluxoVendaCartoes
             //Resutado.
             driver.FindElement(By.Id("btnInicioCadastro")).Click();
 
-            print.PrintScreen();
+            //print.PrintScreen();
 
 
 
