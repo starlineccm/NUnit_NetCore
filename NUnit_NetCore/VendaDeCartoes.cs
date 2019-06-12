@@ -54,7 +54,7 @@ namespace FluxoVendaCartoes
 
 
             
-            //options.AddArgument("--headless");            
+            options.AddArgument("--headless");            
             options.AddArgument("--no-sandbox");
             options.AddArgument("--disable-dev-shm-usage");
             options.AddArgument("--touch-events=enabled");
